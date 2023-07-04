@@ -7,7 +7,7 @@ function Join() {
   const [room , setRoom] = useState('');
 
   return (
-    <div className='joinOuterContainer'>
+    <div className='joinOuterContainer banner'>
       <div className='joinInnerContainer'>
         <div className='heading'>Chat Room</div>
         <div className='mt-20'>Name<input placeholder='' className='joinInput mt-10' type="text" onChange={(event)=> setName(event.target.value)} /></div>
@@ -16,7 +16,6 @@ function Join() {
           <button className='button mt-20' type='submit'>Let's go</button>
         </Link>
       </div>
-      Hello
     </div>
   )
 }

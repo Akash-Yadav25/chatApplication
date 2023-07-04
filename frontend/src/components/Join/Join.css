@@ -21,6 +21,15 @@ html, body {
   background-color: #1A1A1D;
 }
 
+.banner{
+ 
+text-align: center;
+color: #f8f8f8;
+background: url("../images/backg.webp") no-repeat center;
+background-size: cover;
+
+}
+
 .joinInnerContainer {
   width: 20%;
 }
@@ -42,7 +51,7 @@ html, body {
     color: #fff !important;
     text-transform: uppercase;
     text-decoration: none;
-    background: #2979FF;
+    background: #17c772;
     padding: 20px;
     border-radius: 5px;
     display: inline-block;
