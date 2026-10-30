@@ -2,27 +2,167 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #008d49;
-  border-radius: 4px 4px 0 0;
-  height: 60px;
-  width: 100%;
+  padding: 12px 18px;
+  background: rgba(22, 23, 38, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  min-height: 64px;
+  box-sizing: border-box;
 }
 
-.leftInnerContainer {
-  flex: 0.5;
+.infoBarLeft {
   display: flex;
   align-items: center;
-  margin-left: 5%;
-  color: white;
+  gap: 12px;
 }
 
-.rightInnerContainer {
+.roomHashBadge {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
   display: flex;
-  flex: 0.5;
-  justify-content: flex-end;
-  margin-right: 5%;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(6, 182, 212, 0.25);
 }
 
-.onlineIcon {
-  margin-right: 5%;
+.roomInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.roomTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.roomTitle {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.livePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #34d399;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  letter-spacing: 0.5px;
+}
+
+.livePillDot {
+  width: 6px;
+  height: 6px;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #10b981;
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+.memberCountBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #94a3b8;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  margin-top: 2px;
+  transition: color 0.15s ease;
+}
+
+.memberCountBtn:hover {
+  color: #60a5fa;
+  text-decoration: underline;
+}
+
+.infoBarRight {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.infoActionBtn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  padding: 8px;
+  border-radius: 9px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.18s ease;
+  position: relative;
+}
+
+.infoActionBtn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.infoActionBtn.active {
+  background: rgba(99, 102, 241, 0.25);
+  border-color: rgba(99, 102, 241, 0.5);
+  color: #a5b4fc;
+}
+
+.infoActionBtn.muted {
+  color: #ef4444;
+}
+
+.membersToggleBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 11px;
+}
+
+.membersBtnBadge {
+  background: #6366f1;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 999px;
+  min-width: 14px;
+  text-align: center;
+}
+
+.leaveBtn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #f87171;
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
 }

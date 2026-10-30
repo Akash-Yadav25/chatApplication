@@ -1,67 +1,303 @@
-.messageBox {
-    background: #F3F3F3;
-    border-radius: 20px;
-    padding: 5px 20px;
-    color: white;
-    display: inline-block;
-    max-width: 80%;
+.messageRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 4px 18px;
+  position: relative;
+  transition: background 0.15s ease;
+}
+
+.justifyStart {
+  justify-content: flex-start;
+}
+
+.justifyEnd {
+  justify-content: flex-end;
+}
+
+.messageAvatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-bottom: 2px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.messageGroup {
+  display: flex;
+  flex-direction: column;
+  max-width: 72%;
+}
+
+.messageSenderName {
+  font-size: 11px;
+  font-weight: 600;
+  color: #94a3b8;
+  margin-left: 12px;
+  margin-bottom: 3px;
+}
+
+.bubbleWrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.messageBubble {
+  border-radius: 18px;
+  padding: 9px 14px 7px;
+  position: relative;
+  display: inline-block;
+  word-break: break-word;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.1s ease;
+}
+
+.bubbleSent {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: #ffffff;
+  border-bottom-right-radius: 4px;
+}
+
+.bubbleReceived {
+  background: #27293d;
+  color: #f1f5f9;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom-left-radius: 4px;
+}
+
+.bubbleSticker {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 4px !important;
+}
+
+.stickerMessageSvg {
+  width: 100px;
+  height: 100px;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
+  animation: stickerBounce 0.3s ease;
+}
+
+.stickerMessageSvg svg {
+  width: 100%;
+  height: 100%;
+}
+
+.messageImageContainer {
+  margin: -2px -6px 6px -6px;
+  border-radius: 14px;
+  overflow: hidden;
+  max-width: 320px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.messageImageContainer:hover {
+  opacity: 0.95;
+}
+
+.messageImage {
+  display: block;
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.messageBodyText {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+  letter-spacing: -0.1px;
+}
+
+.messageLink {
+  color: #38bdf8;
+  text-decoration: underline;
+  word-break: break-all;
+}
+
+.messageTime {
+  display: block;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.65);
+  text-align: right;
+  margin-top: 4px;
+  margin-left: 12px;
+  float: right;
+}
+
+.bubbleReceived .messageTime {
+  color: #94a3b8;
+}
+
+/* Hover Quick Actions */
+.messageHoverActions {
+  position: absolute;
+  top: -12px;
+  right: 6px;
+  display: none;
+  background: #1e1f30;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 2px 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  gap: 2px;
+  z-index: 10;
+}
+
+.bubbleWrapper:hover .messageHoverActions {
+  display: flex;
+  align-items: center;
+}
+
+.quickReactionTrigger {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  padding: 4px 6px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.15s ease;
+}
+
+.quickReactionTrigger:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #f8fafc;
+}
+
+.copiedIcon {
+  color: #10b981;
+}
+
+/* Floating Reaction Picker Popover */
+.reactionPickerPopover {
+  position: absolute;
+  top: -42px;
+  right: 0;
+  background: #1e1f30;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  padding: 4px 8px;
+  display: flex;
+  gap: 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  z-index: 20;
+  animation: reactionPopIn 0.15s ease-out;
+}
+
+.quickEmojiBtn {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 50%;
+  transition: transform 0.12s ease;
+}
+
+.quickEmojiBtn:hover {
+  transform: scale(1.3);
+}
+
+/* Reaction Badges under Bubble */
+.reactionsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.alignEnd {
+  justify-content: flex-end;
+}
+
+.alignStart {
+  justify-content: flex-start;
+}
+
+.reactionChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #1e1f30;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2px 7px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.reactionChip:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: scale(1.05);
+}
+
+.reactionChip.hasReacted {
+  border-color: #6366f1;
+  background: rgba(99, 102, 241, 0.2);
+}
+
+.reactionEmoji {
+  font-size: 12px;
+}
+
+.reactionCount {
+  font-size: 11px;
+  color: #cbd5e1;
+  font-weight: 600;
+}
+
+/* System Message Pill */
+.systemMessageRow {
+  display: flex;
+  justify-content: center;
+  padding: 8px 16px;
+  width: 100%;
+}
+
+.systemMessagePill {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+  font-size: 12px;
+  padding: 4px 14px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes stickerBounce {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
   }
-  
-  .messageText {
-    width: 100%;
-    letter-spacing: 0;
-    float: left;
-    font-size: 1.1em;
-    word-wrap: break-word;
+  70% {
+    transform: scale(1.1);
   }
-  
-  .messageText img {
-    vertical-align: middle;
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
-  
-  .messageContainer {
-    display: flex;
-    justify-content: flex-end;
-    padding: 0 5%;
-    margin-top: 3px;
+}
+
+@keyframes reactionPopIn {
+  from {
+    transform: scale(0.8) translateY(6px);
+    opacity: 0;
   }
-  
-  .sentText {
-    display: flex;
-    align-items: center;
-    font-family: Helvetica;
-    color: #828282;
-    letter-spacing: 0.3px;
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
   }
-  
-  .pl-10 {
-    padding-left: 10px;
-  }
-  
-  .pr-10 {
-    padding-right: 10px;
-  }
-  
-  .justifyStart {
-    justify-content: flex-start;
-  }
-  
-  .justifyEnd {
-    justify-content: flex-end;
-  }
-  
-  .colorWhite {
-    color: white;
-  }
-  
-  .colorDark {
-    color: #353535;
-  }
-  
-  .backgroundBlue {
-    background: #2979FF;
-  }
-  
-  .backgroundLight {
-    background: #F3F3F3;
-  }
+}
