@@ -1,34 +1,165 @@
-.outerContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.chatPageWrapper {
+  min-height: 100vh;
   height: 100vh;
-  background-color: #1A1A1D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0d0e17;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-.container {
+/* Ambient glow accents */
+.chatPageGlow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+.glowA {
+  top: -150px;
+  right: -150px;
+  background: #6366f1;
+}
+
+.glowB {
+  bottom: -150px;
+  left: -150px;
+  background: #06b6d4;
+}
+
+/* Main Chat Card */
+.chatCardContainer {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: calc(100vh - 32px);
+  max-height: 860px;
+  background: rgba(18, 19, 31, 0.9);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  background: #FFFFFF;
-  border-radius: 8px;
-  height: 60%;
-  width: 35%;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  z-index: 1;
+  overflow: hidden;
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
-  
-  .container {
-    width: 100%;
-    height: 100%;
+/* Inline Search Bar */
+.inChatSearchBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 10px 18px;
+  animation: searchSlideDown 0.2s ease-out;
+}
+
+.searchBarIcon {
+  color: #818cf8;
+}
+
+.inChatSearchInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 13px;
+  outline: none;
+}
+
+.inChatSearchInput::placeholder {
+  color: #64748b;
+}
+
+.clearSearchBtn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.clearSearchBtn:hover {
+  color: #ffffff;
+}
+
+/* Drag & Drop Notice */
+.dragDropNotice {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 11, 20, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.dragDropCard {
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 20px 32px;
+  border-radius: 16px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+  animation: bounce 0.5s ease infinite alternate;
+}
+
+@keyframes searchSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-8px);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .chatPageWrapper {
+    padding: 0;
+    height: 100dvh;
+    min-height: 100dvh;
   }
 
-}
+  .chatCardContainer {
+    max-width: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+    border-radius: 0;
+    border: none;
+  }
 
+  .infoBar {
+    border-radius: 0;
+  }
 
-@media (min-width: 480px) and (max-width: 1200px) {
-  .container {
-    width: 60%;
+  .inputContainer {
+    border-radius: 0;
   }
 }
-  
